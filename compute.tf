@@ -45,7 +45,7 @@ resource "aws_security_group" "zabbix-server" {
   tags = {
     Name        = "Zabbix-Server"
     Application = "Zabbix Server"
-  } 
+  }
 }
 # Create EC2 Instance - ZabbixServer
 resource "aws_instance" "instance-zabbix-server" {
@@ -55,6 +55,7 @@ resource "aws_instance" "instance-zabbix-server" {
   subnet_id                   = aws_subnet.public-subnet-1.id
   key_name                    = aws_key_pair.ssh-key.key_name
   associate_public_ip_address = true
+  #user_data                   = file("install-zabbix.sh")
   user_data                   = file("user-data.sh")
 
   tags = {
@@ -66,7 +67,7 @@ resource "aws_instance" "instance-zabbix-server" {
 resource "aws_eip" "eip-instance-zabbix-server" {
   # count = 1
   instance = aws_instance.instance-zabbix-server.id
-  vpc = true
+  vpc      = true
 }
 
 # Output

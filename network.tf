@@ -21,20 +21,20 @@ resource "aws_internet_gateway" "igw" {
 # Create subnets
 # az1
 resource "aws_subnet" "public-subnet-1" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.215.0.0/27"
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = "10.215.0.0/27"
   map_public_ip_on_launch = true
-  availability_zone = "${var.my_aws_region}a"
+  availability_zone       = "${var.my_aws_region}a"
 
   tags = {
     Name = "Zabbix-Public-Subnet-1"
   }
 }
 resource "aws_subnet" "private-subnet-1" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.215.0.32/27"
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = "10.215.0.32/27"
   map_public_ip_on_launch = false
-  availability_zone = "${var.my_aws_region}a"
+  availability_zone       = "${var.my_aws_region}a"
 
   tags = {
     Name = "Zabbix-Private-Subnet-1"
@@ -42,20 +42,20 @@ resource "aws_subnet" "private-subnet-1" {
 }
 # az2
 resource "aws_subnet" "public-subnet-2" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.215.0.64/27"
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = "10.215.0.64/27"
   map_public_ip_on_launch = true
-  availability_zone = "${var.my_aws_region}b"
+  availability_zone       = "${var.my_aws_region}b"
 
   tags = {
     Name = "Zabbix-Public-Subnet-2"
   }
 }
 resource "aws_subnet" "private-subnet-2" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.215.0.96/27"
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = "10.215.0.96/27"
   map_public_ip_on_launch = false
-  availability_zone = "${var.my_aws_region}b"
+  availability_zone       = "${var.my_aws_region}b"
 
   tags = {
     Name = "Zabbix-Private-Subnet-2"
